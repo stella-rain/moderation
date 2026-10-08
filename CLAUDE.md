@@ -64,3 +64,4 @@ Follow the `kade-workflow` skill; where it and this file differ, this file wins.
 - Author: `Kade <23338687+enjay27@users.noreply.github.com>`. No other email in commits or git config.
 - The remote file tools cannot write `.github/` or `.claude/` on Kade's PC; deliver those
   files as a zip laid out from the `stella-rain` root.
+- New module, crate or dependency: decide it with Kade first (options, trade-offs for long-term release maintainability, your recommendation).
