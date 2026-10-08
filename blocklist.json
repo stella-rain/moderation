@@ -1,6 +1,7 @@
 {
-  "version": 1,
+  "version": 2,
   "updated": "2026-10-08",
   "blocked_stages": [],
+  "blocked_hashes": [],
   "blocked_creators": []
 }

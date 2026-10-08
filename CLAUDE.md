@@ -2,7 +2,8 @@
 
 Public moderation data for Stella Rain (ADR-025). The game downloads `blocklist.json` from
 `main` by raw URL at startup and hides the listed stages and creators for everyone. Players
-report stages and creators with the in-game **Report** button, which opens an issue here.
+report stages and creators with the in-game **Report** button: mainly by email to the
+moderation mailbox, or, if they choose, as an issue here.
 Follow the `kade-workflow` skill; where it and this file differ, this file wins.
 
 ## This repository is public
@@ -20,13 +21,17 @@ Follow the `kade-workflow` skill; where it and this file differ, this file wins.
   "version": 12,
   "updated": "2026-10-08",
   "blocked_stages": ["alice/my-stages@bad-stage@v1"],
+  "blocked_hashes": ["<sha-256 of stage + replay>"],
   "blocked_creators": ["spammer123"]
 }
 ```
 
 - `blocked_stages`: stage codes, `owner/repo@stage-id@vN`. `blocked_creators`: GitHub logins.
+- `blocked_hashes`: the content hash the game and catalog record for a stage with its replay
+  (SHA-256, lowercase hex). It keeps a stage blocked as a share code or republished under
+  another code. Block a stage by code and by hash.
 - Every change increases `version` by 1 and sets `updated` to the date (UTC).
-- Keep both lists sorted and free of duplicates, so diffs show exactly what changed.
+- Keep every list sorted and free of duplicates, so diffs show exactly what changed.
 - A malformed file reaches every player at once (the game is meant to keep its last good copy,
   but new blocks stop applying). Validate before committing: `python3 -m json.tool blocklist.json`.
 
@@ -36,6 +41,9 @@ Follow the `kade-workflow` skill; where it and this file differ, this file wins.
    prepare the change, but never adds or removes an entry without Kade's decision on that entry.
 2. Block: add the entry, bump `version` and `updated`, commit with a subject that names the
    issue (`Block one stage reported in #12`), and close the issue with a short neutral comment.
+   An email report never reaches this repository: Kade relays the decision, and the subject
+   says `reported by email`. Nothing from the email (address, name, text) goes into a commit,
+   an issue or the blocklist.
 3. Unblock: remove the entry the same way; say why in the commit body without personal details.
 4. Not acted on: close the issue with a short neutral comment.
 
