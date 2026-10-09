@@ -57,9 +57,9 @@ moderation mailbox, or, if they choose, as an issue here.
 
 - Moderation issues are not synced to the organization Project (ADR-031); development work on
   this repository is tracked in `stella-rain/app` issues.
-- **Local sessions** (on Kade's PC): commit each finished task to `main` automatically; Kade
-  pushes.
-- Zip deliveries are laid out from the `stella-rain` root.
+- **Local sessions** (on Kade's PC or Mac): commit each finished task to `main` automatically;
+  Kade pushes.
+- Zip deliveries (needed on the Windows PC only) are laid out from the `stella-rain` root.
 
 ## Overrides of global rules
 
