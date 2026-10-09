@@ -55,7 +55,7 @@ moderation mailbox, or, if they choose, as an issue here.
 
 ## State and version control
 
-- Moderation issues are not synced to the organization Project (ADR-031); development work on
+- Moderation issues are not synced to the organization Project (ADR-044); development work on
   this repository is tracked in `stella-rain/app` issues.
 - **Local sessions** (on Kade's PC or Mac): commit each finished task to `main` automatically;
   Kade pushes.
