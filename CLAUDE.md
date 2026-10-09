@@ -4,12 +4,11 @@ Public moderation data for Stella Rain (ADR-025). The game downloads `blocklist.
 `main` by raw URL at startup and hides the listed stages and creators for everyone. Players
 report stages and creators with the in-game **Report** button: mainly by email to the
 moderation mailbox, or, if they choose, as an issue here.
-Follow the `kade-workflow` skill; where it and this file differ, this file wins.
 
 ## This repository is public
 
-- Everything here is public, including issues. How moderation is decided (thresholds,
-  volumes, strategy) is discussed in `stella-rain/app` issues, never here.
+- How moderation is decided (thresholds, volumes, strategy) is discussed in
+  `stella-rain/app` issues, never here.
 - Reports may contain what a reporter wrote; never add personal data to issues, commits or
   the blocklist, and never copy report text into commits.
 - Data is CC0 1.0.
@@ -53,15 +52,17 @@ Follow the `kade-workflow` skill; where it and this file differ, this file wins.
 |---|---|
 | `blocklist.json` | `python3 -m json.tool blocklist.json`; version bumped; lists sorted |
 | `CLAUDE.md` | `python3 ../.github/scripts/claude_md_check.py .` (CI runs it too) |
-| Line endings | `.gitattributes` keeps `* text=auto eol=lf` |
 
 ## State and version control
 
 - Moderation issues are not synced to the organization Project (ADR-031); development work on
   this repository is tracked in `stella-rain/app` issues.
 - **Local sessions** (on Kade's PC): commit each finished task to `main` automatically; Kade
-  pushes. **Cloud sessions**: branch `claude/<task>` and a PR; Kade merges.
-- Author: `Kade <23338687+enjay27@users.noreply.github.com>`. No other email in commits or git config.
-- The remote file tools cannot write `.github/` or `.claude/` on Kade's PC; deliver those
-  files as a zip laid out from the `stella-rain` root.
-- New module, crate or dependency: decide it with Kade first (options, trade-offs for long-term release maintainability, your recommendation).
+  pushes.
+- Zip deliveries are laid out from the `stella-rain` root.
+
+## Overrides of global rules
+
+- **No auto-merge.** A cloud session opens a PR and Kade merges it; GitHub auto-merge stays
+  off. A malformed `blocklist.json` reaches every player at once, and only Kade decides what
+  is blocked.
