@@ -32,7 +32,8 @@ moderation mailbox, or, if they choose, as an issue here.
 - Every change increases `version` by 1 and sets `updated` to the date (UTC).
 - Keep every list sorted and free of duplicates, so diffs show exactly what changed.
 - A malformed file reaches every player at once (the game is meant to keep its last good copy,
-  but new blocks stop applying). Validate before committing: `python3 -m json.tool blocklist.json`.
+  but new blocks stop applying). Validate before committing:
+  `python3 scripts/blocklist_check.py --base <main's blocklist.json>` (CI runs it too).
 
 ## Handling a report
 
@@ -50,7 +51,8 @@ moderation mailbox, or, if they choose, as an issue here.
 
 | Part | Gate |
 |---|---|
-| `blocklist.json` | `python3 -m json.tool blocklist.json`; version bumped; lists sorted |
+| `blocklist.json` | `python3 scripts/blocklist_check.py`, `--base` checks the bump (CI: `blocklist-check.yml`) |
+| `scripts/` | `python3 -m unittest discover -s scripts` (CI: `blocklist-check.yml`) |
 | `CLAUDE.md` | `python3 ../.github/scripts/claude_md_check.py .` (CI runs it too) |
 
 ## State and version control

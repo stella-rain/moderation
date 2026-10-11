@@ -6,3 +6,6 @@
 ._*
 .Spotlight-V100
 .Trashes
+
+# Python bytecode from running scripts/
+__pycache__/
