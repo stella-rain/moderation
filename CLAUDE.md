@@ -59,7 +59,8 @@ moderation mailbox, or, if they choose, as an issue here.
   this repository is tracked in `stella-rain/app` issues.
 - **Local and cloud sessions** work on `claude/<task>`; a task may hold several commits and
   gets one PR. Kade merges it (see Overrides). A local session opens the PR with Kade's `gh`
-  login; without it, it prints the commands for Kade.
+  login; without it, it prints the commands for Kade. `branch-cleanup.yml` deletes the
+  merged `claude/*` branches (ADR-053).
 - Zip deliveries (needed on the Windows PC only) are laid out from the `stella-rain` root.
 
 ## Overrides of global rules
