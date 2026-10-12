@@ -54,6 +54,7 @@ moderation mailbox, or, if they choose, as an issue here.
 | `blocklist.json` | `python3 scripts/blocklist_check.py`, `--base` checks the bump (CI: `blocklist-check.yml`) |
 | `scripts/` | `python3 -m unittest discover -s scripts` (CI: `blocklist-check.yml`) |
 | `CLAUDE.md` | `python3 ../.github/scripts/claude_md_check.py .` (CI runs it too) |
+| Line endings | CI `eol-check` fails on any CRLF file (`git ls-files --eol`) |
 
 ## State and version control
 
