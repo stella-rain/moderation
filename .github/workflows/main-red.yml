@@ -1,0 +1,26 @@
+# Keeps one `main-red` issue per check workflow that fails on main. When a push run of a
+# workflow below fails on main, the reusable workflow opens `main is red: <workflow> at
+# <short sha>` (label `main-red`); later failures comment on it, and a later success comments
+# and closes it. Pull request runs and other branches change nothing. Blocklist check is the
+# one that matters most: a malformed blocklist.json reaches every player at once.
+# Pushes to main here are Kade's merges, which start push runs with no App token. Public
+# repository: the default ubuntu-latest runner, never self-hosted. No auto-merge here, so no
+# auto-merge.yml list to keep equal. A new check workflow is added to `workflows:` in the same PR.
+# `workflow_run` is read from main: a change to this file acts only after its own merge.
+# actionlint is left out: it is path-filtered and runs only when workflows change.
+name: Main red
+
+on:
+  workflow_run:
+    workflows: ["Blocklist check", "CLAUDE.md check", "Line endings", "Repository check"]
+    types: [completed]
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  main-red:
+    uses: stella-rain/.github/.github/workflows/main-red.yml@main
+    permissions:
+      issues: write  # open, comment on and close the main-red issues; create the label
+      actions: read  # the run being reported
