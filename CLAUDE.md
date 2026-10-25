@@ -1,6 +1,6 @@
 # Stella Rain: moderation
 
-Public moderation data for Stella Rain (ADR-025). The game downloads `blocklist.json` from
+Public moderation data for Stella Rain (ADR-SVC-6). The game downloads `blocklist.json` from
 `main` by raw URL at startup and hides the listed stages and creators for everyone. Players
 report stages and creators with the in-game **Report** button: mainly by email to the
 moderation mailbox, or, if they choose, as an issue here.
@@ -58,12 +58,12 @@ moderation mailbox, or, if they choose, as an issue here.
 
 ## State and version control
 
-- Moderation issues are not synced to the organization Project (ADR-044); development work on
+- Moderation issues are not synced to the organization Project (app's `docs/architecture/process.md#planning`); development work on
   this repository is tracked in `stella-rain/app` issues.
 - **Local and cloud sessions** work on `claude/<task>`; a task may hold several commits and
   gets one PR. Kade merges it (see Overrides). A local session opens the PR with Kade's `gh`
   login; without it, it prints the commands for Kade. `branch-cleanup.yml` deletes the
-  merged `claude/*` branches (ADR-053).
+  merged `claude/*` branches (app's `docs/architecture/process.md#merging`).
 - Zip deliveries (needed on the Windows PC only) are laid out from the `stella-rain` root.
 
 ## Overrides of global rules
